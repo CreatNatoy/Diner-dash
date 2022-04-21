@@ -1,41 +1,44 @@
 using UnityEngine;
+using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
-    [SerializeField] private float _speed = 7f;
 
+    private NavMeshAgent _agent; 
     private Transform _target;
-    private bool _isMoving = false;
+
+    private void Start()
+    {
+        _agent = GetComponent<NavMeshAgent>();
+        _agent.updateRotation = false;
+        _agent.updateUpAxis = false; 
+    }
 
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            _isMoving = CheckTarget();
+           CheckTarget();
         }
 
-        if (_isMoving)
-            MoveToTarget();
+
     }
 
-    private bool CheckTarget()
+    private void CheckTarget()
     {
         RaycastHit2D hit = new RaycastHit2D();
         hit = Physics2D.Raycast(_camera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
         if (hit.collider != null && hit.collider.gameObject.TryGetComponent(out MoveToPoint moveToPoint))
         {
             _target = moveToPoint.Point;
-            return true;
+            MoveToTarget();
         }
-        return false;
     }
 
     private void MoveToTarget()
     {
-        transform.position = Vector2.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
-
-        if (transform.position == _target.position)
-            _isMoving = false;
+        _agent.SetDestination(_target.position);
     }
 }
