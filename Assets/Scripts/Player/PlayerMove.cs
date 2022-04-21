@@ -22,8 +22,6 @@ public class PlayerMove : MonoBehaviour
         {
            CheckTarget();
         }
-
-
     }
 
     private void CheckTarget()

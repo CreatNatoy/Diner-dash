@@ -6,5 +6,5 @@ public class Customer : MonoBehaviour
 {
     [SerializeField] private ColorCustomer _colorCustomer;
 
-    public ColorCustomer ColorCustomer => _colorCustomer; 
+    public ColorCustomer ColorCustomer => _colorCustomer;
 }
