@@ -35,19 +35,13 @@ public class TableOnTrigger : MonoBehaviour
             Hand playerHand = playerHands.FreeHand();
             if (playerHand != null)
             {
-                if (_tableState.IsOrderReady)
+                if (_tableState.OrderSheet.GetColor() == Color.white && _tableState.OrderSheet.gameObject.activeSelf)
                 {
-                    playerHand.OnActiveOrderSheet(_tableState.Index);
-                    _tableState.WaitOrderSheet();
-                    _isCleanTable = false; 
+                    ApplyOrder(playerHand);
                 }
                 else if(_tableState.OrderSheet.GetColor() == Color.black && ! _isCleanTable)
                 {
-                    _tableState.CustomerState.gameObject.SetActive(false);
-                    _tableState.OrderSheet.gameObject.SetActive(false); 
-                    playerHand.OnActiveOrderSheet(_tableState.Index);
-                    playerHand.OrderSheet.SetColor(Color.black);
-                    _isCleanTable = true; 
+                    CleanTable(playerHand);
                 }
 
             }
@@ -60,5 +54,22 @@ public class TableOnTrigger : MonoBehaviour
         {
             customerState.SetIsTable(false);
         }
+    }
+
+    private void ApplyOrder(Hand playerHand)
+    {
+        playerHand.OnActiveOrderSheet(_tableState.Index);
+        _tableState.WaitOrderSheet();
+        _isCleanTable = false;
+    }
+
+    private void CleanTable(Hand playerHand)
+    {
+        _tableState.CustomerState.gameObject.SetActive(false);
+        _tableState.OrderSheet.gameObject.SetActive(false);
+        _tableState.SetStateTable(true); 
+        playerHand.OnActiveOrderSheet(_tableState.Index);
+        playerHand.OrderSheet.SetColor(Color.black);
+        _isCleanTable = true;
     }
 }

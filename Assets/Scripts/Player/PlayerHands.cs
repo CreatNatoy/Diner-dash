@@ -43,4 +43,15 @@ public class PlayerHands : MonoBehaviour
         }
     }
 
+    public void GiveOrderWish()
+    {
+        for (int i = 0; i < _hands.Length; i++)
+        {
+            if(_hands[i].OrderSheet.GetColor() == Color.black)
+            {
+                _hands[i].OnDisableOrderSheet(); 
+            }
+        }
+    }
+
 }

@@ -39,13 +39,12 @@ public class TableState : MonoBehaviour
 
     private void ActiveOrderSheet()
     {
-        _isOrderReady = true; 
+        _orderSheet.SetColor(Color.white);
         _orderSheet.gameObject.SetActive(true);
     }
 
     public void WaitOrderSheet()
     {
-        _isOrderReady = false;
         _orderSheet.SetColor(Color.red); 
     }
 
