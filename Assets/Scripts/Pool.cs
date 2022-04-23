@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Pool : MonoBehaviour
 {
-    [SerializeField] private Customer[] _customers;
+    [SerializeField] private CustomerState[] _customers;
     [SerializeField] private int _amountToPool; 
     
-    private List<Customer> _customersList = new List<Customer>();
+    private List<CustomerState> _customersList = new List<CustomerState>();
 
     private void Start()
     {
@@ -18,13 +18,13 @@ public class Pool : MonoBehaviour
         for (int i = 0; i < _amountToPool; i++)
         {
             int rand = Random.Range(0, _customers.Length);
-            Customer customer = Instantiate(_customers[rand], transform);
+            CustomerState customer = Instantiate(_customers[rand], transform);
             customer.gameObject.SetActive(false);
             _customersList.Add(customer);
         }
     }
 
-    public Customer GetPooledCustomers()
+    public CustomerState GetPooledCustomers()
     {
         for (int i = 0; i < _amountToPool; i++)
         {

@@ -21,10 +21,10 @@ public class SpawnCustomers : MonoBehaviour
 
     private void Update()
     {
-        Timer(); 
+        TimerSpawn(); 
     }
 
-    private void Timer()
+    private void TimerSpawn()
     {
         _time += Time.deltaTime;
         if(_time >= _timeSpawn)
@@ -37,7 +37,7 @@ public class SpawnCustomers : MonoBehaviour
 
     private void SpawnCustomer()
     {
-       Customer customer = _pool.GetPooledCustomers();
+       CustomerState customer = _pool.GetPooledCustomers();
         if (customer != null)
         {
             customer.gameObject.SetActive(true);

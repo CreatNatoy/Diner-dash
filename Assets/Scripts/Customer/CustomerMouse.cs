@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Customer))]
+[RequireComponent(typeof(CustomerState))]
 public class CustomerMouse : MonoBehaviour
 {
     private Vector2 _startPosition;
@@ -8,9 +8,10 @@ public class CustomerMouse : MonoBehaviour
     private bool _isSitDown = false; 
     private Camera _camera;
     private Vector2 _positionTable;
-    private Table _table; 
-    private Customer _customer;
+    private TableState _table; 
+    private CustomerState _customerState;
 
+    public bool IsSitDown => _isSitDown;
 
     private void OnEnable()
     {
@@ -22,7 +23,7 @@ public class CustomerMouse : MonoBehaviour
     private void Start()
     {
         _camera = Camera.main;
-        _customer = GetComponent<Customer>();
+        _customerState = GetComponent<CustomerState>();
     }
 
     private void OnMouseDrag()
@@ -41,20 +42,25 @@ public class CustomerMouse : MonoBehaviour
             transform.position = _startPosition;
         else
         {
-            _isSitDown = true;
-            transform.position = _positionTable;
-            _table.SetColor(_customer);
+            SitDownTable();
         }
     }
 
-    public void IsTable(bool state)
+    private void SitDownTable()
+    {
+        _isSitDown = true;
+        transform.position = _positionTable;
+        _table.SitDownCustomer(_customerState);
+    }
+
+    public void SetIsTable(bool state)
     {
         _isTable = state; 
     }
 
-    public void SetPositionTable(Vector3 position, Table table)
+    public void SetStateTable(TableState table)
     {
-        _positionTable = position;
         _table = table;
+        _positionTable = _table.gameObject.transform.position;
     }
 }

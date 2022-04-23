@@ -2,7 +2,7 @@ using UnityEngine;
 
 public enum ColorCustomer { blue, green, red };
 
-public class Customer : MonoBehaviour
+public class CustomerState : MonoBehaviour
 {
     [SerializeField] private ColorCustomer _colorCustomer;
 
