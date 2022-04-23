@@ -10,23 +10,23 @@ public class TableOnTrigger : MonoBehaviour
         _tableState = GetComponent<TableState>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.gameObject.TryGetComponent(out CustomerMouse customerMouse))
+        if(collision.gameObject.TryGetComponent(out CustomerState customerState))
         {
             if(_tableState.IsFreeTable)
             {
-                customerMouse.SetIsTable(true);
-                customerMouse.SetStateTable(_tableState); 
+                customerState.SetIsTable(true); 
+                customerState.SetStateTable(_tableState); 
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.TryGetComponent(out CustomerMouse customerMouse))
+        if(collision.gameObject.TryGetComponent(out CustomerState customerState))
         {
-            customerMouse.SetIsTable(false);
+           customerState.SetIsTable(false);
         }
     }
 }
