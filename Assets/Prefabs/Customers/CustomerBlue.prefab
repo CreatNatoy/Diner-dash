@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: -350127033235814287}
   - component: {fileID: 3587025802171061461}
   - component: {fileID: -1835787731211971023}
-  - component: {fileID: 5397630098896357823}
   m_Layer: 0
   m_Name: CustomerBlue
   m_TagString: Untagged
@@ -75,8 +74,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _colorCustomer: 0
-  _timeOrderEat: 1
-  _orderSheet: {fileID: 0}
 --- !u!114 &-1835787731211971023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,18 +84,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c71357d9decc7de49b54d4903e559f2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5397630098896357823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 163219611358661520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b462e00e393e3c9448b679097177be81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3938224358412300992

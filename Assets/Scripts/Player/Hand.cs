@@ -4,20 +4,28 @@ public class Hand : MonoBehaviour
 {
     [SerializeField] private OrderSheet _orderSheet;
 
-    private bool _isFreeHand = true; 
+    private bool _isFreeHand = true;
 
     public bool IsFreeHand => _isFreeHand;
+    public OrderSheet OrderSheet => _orderSheet;
 
     private void Start()
     {
-        OnActiveOrderSheet(false); 
+        OnDisableOrderSheet();
     }
 
-    public void OnActiveOrderSheet(bool state, int index = 0)
+    public void OnActiveOrderSheet(int index = 1)
     {
-        _orderSheet.gameObject.SetActive(state);
+        _orderSheet.gameObject.SetActive(true);
         _orderSheet.SetIndex(index);
-        SetStateHand(state);
+        SetStateHand(true);
+    }
+
+    public void OnDisableOrderSheet()
+    {
+        _orderSheet.SetColor(Color.white);
+        _orderSheet.gameObject.SetActive(false);
+        SetStateHand(false);
     }
 
     private void SetStateHand(bool state)

@@ -8,7 +8,7 @@ public class OrderSheet : MonoBehaviour
     private SpriteRenderer _spriteRender;
     private int _index;
 
-    public int Index => _index; 
+    public int Index => _index;
 
     private void Awake()
     {
@@ -24,5 +24,10 @@ public class OrderSheet : MonoBehaviour
     public void SetColor(Color color)
     {
         _spriteRender.color = color;
+    }
+
+    public Color GetColor()
+    {
+        return _spriteRender.color;
     }
 }
