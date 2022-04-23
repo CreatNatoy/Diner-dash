@@ -20,6 +20,17 @@ public class TableOnTrigger : MonoBehaviour
                 customerState.SetStateTable(_tableState); 
             }
         }
+
+        if(collision.gameObject.TryGetComponent(out PlayerHands playerHands))
+        {
+            Hand playerHand = playerHands.FreeHand();
+            if (_tableState.IsOrderReady && playerHand != null)
+            {
+                playerHand.OnActiveOrderSheet(true, _tableState.Index);
+                _tableState.WaitOrderSheet(); 
+            }
+                
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
