@@ -5,7 +5,7 @@ public class SpawnCustomers : MonoBehaviour
 {
     [Header("Time")]
     [SerializeField] private float _timeSpawn = 1f;
-    [Range(0.5f, 1f)]
+    [Range(0.7f, 1f)]
     [SerializeField] private float _reductionTime = 0.98f;
     [Space(10)]
     [SerializeField] private int _sizeCustomers = 20;

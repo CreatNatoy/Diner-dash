@@ -1,11 +1,14 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TableState : MonoBehaviour
 {
     [SerializeField] private int _index = 1; 
     [SerializeField] private OrderSheet _orderSheet;
     [SerializeField] private float _timeOrder = 1f;
-    [SerializeField] private float _timeEat = 1f; 
+    [SerializeField] private float _timeEat = 1f;
+    [SerializeField] private TMP_Text _textBonus; 
 
     private bool _isFreeTable = true;
     private bool _isOrderReady = false;
@@ -18,6 +21,8 @@ public class TableState : MonoBehaviour
     public bool IsFreeTable => _isFreeTable;
     public bool IsOrderReady => _isOrderReady;
     public int Index => _index;
+
+    public UnityEvent<int> ApplyMoneyEvent;
 
     private void Start()
     {
@@ -57,5 +62,11 @@ public class TableState : MonoBehaviour
     public void EndEating()
     {
         _orderSheet.SetColor(Color.black); 
+    }
+
+    public void GiveMoney()
+    {
+        ApplyMoneyEvent?.Invoke(_tableColor.CounterColor); 
+        _textBonus.text = "x" + _tableColor.CounterColor.ToString();
     }
 }

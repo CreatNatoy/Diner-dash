@@ -67,7 +67,8 @@ public class TableOnTrigger : MonoBehaviour
     {
         _tableState.CustomerState.gameObject.SetActive(false);
         _tableState.OrderSheet.gameObject.SetActive(false);
-        _tableState.SetStateTable(true); 
+        _tableState.SetStateTable(true);
+        _tableState.GiveMoney(); 
         playerHand.OnActiveOrderSheet(_tableState.Index);
         playerHand.OrderSheet.SetColor(Color.black);
         _isCleanTable = true;

@@ -21,13 +21,6 @@ public class OrderSheet : MonoBehaviour
         _index = index;
     }
 
-    public void SetColor(Color color)
-    {
-        _spriteRender.color = color;
-    }
-
-    public Color GetColor()
-    {
-        return _spriteRender.color;
-    }
+    public void SetColor(Color color) => _spriteRender.color = color;
+    public Color GetColor() => _spriteRender.color;
 }
